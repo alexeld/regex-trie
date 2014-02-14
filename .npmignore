@@ -1,4 +1,8 @@
 *.un~*
 *.sw*
 node_modules/*
-.git*
+docs/*
+test/*
+.jshintrc
+.npmignore
+gulpfile.js
