@@ -1,0 +1,43 @@
+{
+  "name": "regex-trie",
+  "description": "Create a regular expression to match any of the phrases added to the trie (inspired by Dan Kogai's Regexp::Trie Perl module.)",
+  "version": "0.0.1",
+  "homepage": "https://github.com/alexeld/regex-trie",
+  "keywords": [
+    "regex",
+    "regexp",
+    "trie"
+  ],
+  "repository": {
+    "url": "https://github.com/alexeld/regex-trie.git"
+  },
+  "author": {
+    "name": "Alex Elder",
+    "email": "hello@handwritten.io",
+    "url": "http://handwritten.io"
+  },
+  "main": "./lib/regex-trie.js",
+  "maintainers": [
+    {
+      "name": "Alex Elder",
+      "email": "hello@handwritten.io",
+      "web": "http://www.handwritten.io"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "~1.17.1",
+    "should": "~3.1.2",
+    "gulp-jshint": "~1.4.0",
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.5.2",
+    "gulp-watch": "~0.5.0",
+    "blanket": "~1.1.6",
+    "gulp-yuidoc": "~0.1.0"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "./lib/regex-trie.js"
+    }
+  },
+}
