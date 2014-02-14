@@ -94,6 +94,48 @@ phrases will still match:
     // Output => true, true, true, true, true, true
 ```
 
+## Development
+
+`regex-trie` uses [Gulp](http://gulpjs.com/) as its build system. Currently
+`gulpfile` defines a few tasks:
+
+* `lint` -- `JSHint` (see `.jshintrc` for this project's settings)
+* `test` -- runs `mocha` from `gulp`
+* `docs` -- `yuidocjs` to produce development documentation
+* `watch` -- watches for changes to JS files in `./test/` and `./lib/` and runs the `lint` task
+* `default` -- by default the `watch` task runs (which runs `lint`)
+* `continuous` -- runs `watch` (which runs `lint`) and `test` on every JS file change.
+
+### Development Dependencies
+
+Please see `package.json` for the latest development dependencies. At the time
+of writing, you'll need:
+
+```javascript
+    "mocha": "~1.17.1"
+    "should": "~3.1.2"
+    "gulp-jshint": "~1.4.0"
+    "gulp-util": "~2.2.14"
+    "gulp": "~3.5.2"
+    "gulp-watch": "~0.5.0"
+    "blanket": "~1.1.6"
+    "gulp-yuidoc": "~0.1.0"
+```
+
+## Testing
+
+The tests within `regex-trie` use [mocha](http://visionmedia.github.io/mocha/).
+To run the tests. simply run `mocha` from your terminal. You should see output
+similar to:
+
+```
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+
+    40 passing (30ms)
+```
+
+To
+
 ## TODO
 
 List of things to add aren't in any specific order.
