@@ -2,6 +2,9 @@
 Create a regular expression to match any of the phrases added to the trie (inspired by Dan Kogai's [Regexp::Trie](http://search.cpan.org/~dankogai/Regexp-Trie-0.02/lib/Regexp/Trie.pm) Perl module.
 
 ## Installation and Usage
+
+### Node
+
 1. `npm install regex-trie`
 2. `require` and use (see the Example section for more comprehensive usage instructions.)
 ```javascript
@@ -10,7 +13,21 @@ var RegexTrie = require('regex-trie'),
     regex     = trie.add('foo').add('bar').regex();
 ```
 
-## Example
+### Browser
+1. `npm install regex-trie`
+2. create your application using `RegexTrie`:
+```javascript
+// app.js
+var RegexTrie = require('regex-trie'),
+    trie      = new RegexTrie(),
+    regex     = trie.add('foo').add('bar').regex();
+
+console.log(regex);
+```
+3. Use [browserfy](https://github.com/substack/node-browserify) to create the
+   the browser-safe package, e.g.: `browserfy app.js -o bundle.js`.
+
+### Usage
 ```javascript
 var RegexTrie = require('regex-trie');
 
