@@ -1,4 +1,4 @@
-# RegexTrie v0.0.1
+# RegexTrie
 Create a regular expression to match any of the phrases added to the trie (inspired by Dan Kogai's [Regexp::Trie](http://search.cpan.org/~dankogai/Regexp-Trie-0.02/lib/Regexp/Trie.pm) Perl module.
 
 ## Installation and Usage
