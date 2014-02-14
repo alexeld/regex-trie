@@ -57,7 +57,7 @@ etc).
         .add(['who', 'what', 'when', 'where'];
 ```
 
-All numbers (except `NaN`) are coerced in to their decimal equivilants before
+All numbers (except `NaN`) are coerced in to their decimal equivalents before
 being added.
 
 Before adding new phrases, the trie is checked to see whether or not that
