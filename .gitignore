@@ -1,3 +1,4 @@
-*.un~
-*.swp
-*.swa
+*.un~*
+*.sw*
+node_modules/*
+.git*
