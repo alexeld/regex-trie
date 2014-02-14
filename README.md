@@ -1,9 +1,18 @@
 # RegexTrie v0.0.1
 Create a regular expression to match any of the phrases added to the trie (inspired by Dan Kogai's [Regexp::Trie](http://search.cpan.org/~dankogai/Regexp-Trie-0.02/lib/Regexp/Trie.pm) Perl module.
 
-## Example
+## Installation and Usage
+1. FIXME (need to get this hosted on npm before committing these steps.)
+2. Require and use (see the Example section for more comprehensive usage instructions.)
+```javascript
+var RegexTrie = require('regex-trie'),
+    trie      = new RegexTrie(),
+    regex     = trie.add('foo').add('bar').regex();
 ```
-var RegexTrie = require('./lib/regex-trie');
+
+## Example
+```javascript
+var RegexTrie = require('regex-trie');
 
 // Create a new RegexTrie instance
 var trie = new RegexTrie();
@@ -13,13 +22,12 @@ trie.add('foo')
     .add('bar')
     .add('baz');
 
-// You can use an array to add phrases if you'd rather
+// You can use an array to add phrases if you'd rather (duplicate 
+// pharses are ignored.)
 trie.add(['foo', 'bar', 'baz']);
 
 // Fetch a RegExp to represent all the phrases in the trie
-var regex = trie.regex(); // 
-
-console.log(regex);
+var regex = trie.regex(); // regex => /(?:foo|ba[rz])/
 
 // What matches?
 var things_to_match = ['foo', 'bar', 'baz', 'bat', 'fun', 'food'],
@@ -27,4 +35,46 @@ var things_to_match = ['foo', 'bar', 'baz', 'bat', 'fun', 'food'],
 
 console.log(match_results);
 // => [ true, true, true, false, false, true ]
+```
+
+## Methods
+
+### `RegexTrie()` (constructor)
+
+Creates a new instance of `RegexTrie`. Currently doesn't accept any options
+however this will likely change as the module evolves.
+
+### `.add(phrase_to_add)`
+
+Adds a new phrase to the trie. Accepts singleton arguments, or an array of
+phrases. Ignores any values which aren't literals (objects, bools, arrays,
+etc).
+
+```javascript
+    trie.add('foo')
+        .add('bar')
+        .add('baz')
+        .add(['who', 'what', 'when', 'where'];
+```
+
+All numbers (except `NaN`) are coerced in to their decimal equivilants before
+being added.
+
+Before adding new phrases, the trie is checked to see whether or not that
+phrase already exists (using `contains`).
+
+### `.contains(phrase)`
+
+Will check to see if the trie contains a phrase which matches `phrase`, and
+return `true` or `false` if the phrase does or does not exist.
+
+### `.regex()`
+
+Returns a `RegExp` instance which should match each individual phrase in the
+tree. The trie will escape any character that matches: `/([^A-Za-z0-9_])/`. For
+example, if the following values are added, the pipe (OR) will be escaped:
+
+```javascript
+    trie.add(['foo', '|', 'bar'].regex();
+    // => (?:foo|\||bar)
 ```
