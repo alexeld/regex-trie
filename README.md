@@ -6,7 +6,7 @@ Create a regular expression to match any of the phrases added to the trie (inspi
 ### Node
 
 1. `npm install regex-trie`
-2. `require` and use (see the Example section for more comprehensive usage instructions.)
+2. `require` and use (see the *Usage* section for more comprehensive usage instructions.)
 ```javascript
 var RegexTrie = require('regex-trie'),
     trie      = new RegexTrie(),
