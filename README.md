@@ -2,8 +2,8 @@
 Create a regular expression to match any of the phrases added to the trie (inspired by Dan Kogai's [Regexp::Trie](http://search.cpan.org/~dankogai/Regexp-Trie-0.02/lib/Regexp/Trie.pm) Perl module.
 
 ## Installation and Usage
-1. FIXME (need to get this hosted on npm before committing these steps.)
-2. Require and use (see the Example section for more comprehensive usage instructions.)
+1. `npm install regex-trie`
+2. `require` and use (see the Example section for more comprehensive usage instructions.)
 ```javascript
 var RegexTrie = require('regex-trie'),
     trie      = new RegexTrie(),
