@@ -39,5 +39,5 @@
     "blanket": {
       "pattern": "./lib/regex-trie.js"
     }
-  },
+  }
 }
