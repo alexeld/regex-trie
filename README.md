@@ -142,3 +142,7 @@ List of things to add aren't in any specific order.
 
 1. Regex options to configure capturing and anchoring
 2. Cache compiled trie branches (to speed up RegExp generation)
+
+## License
+
+See `LICENSE.txt` for license rights and limitations (MIT).
