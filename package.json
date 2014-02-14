@@ -9,6 +9,7 @@
     "trie"
   ],
   "repository": {
+    "type": "git",
     "url": "https://github.com/alexeld/regex-trie.git"
   },
   "author": {
