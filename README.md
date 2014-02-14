@@ -124,8 +124,9 @@ of writing, you'll need:
 
 ## Testing
 
-The tests within `regex-trie` use [mocha](http://visionmedia.github.io/mocha/).
-To run the tests. simply run `mocha` from your terminal.
+The tests within `regex-trie` use [mocha](http://visionmedia.github.io/mocha/)
+with [should.js](https://github.com/visionmedia/should.js/) assertions. To test
+the module, just run `mocha` from your terminal.
 
 ## TODO
 
