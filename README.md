@@ -78,3 +78,25 @@ example, if the following values are added, the pipe (OR) will be escaped:
     trie.add(['foo', '|', 'bar'].regex();
     // => (?:foo|\||bar)
 ```
+
+#### Regex Specific Details
+
+The `RegExp` returned by `regex()` is a non-capturing, un-anchored regular
+expression meaning it'll never capture its matches and all of the following
+phrases will still match:
+
+```javascript
+    var regex = trie.add(['foo', 'bar', 'car']).regex();
+    var words_to_match = ['fool', 'afool', 'bart', 'abart', 'acar', 'acard'];
+    words_to_match.forEach( function (word) {
+        console.log(regex.test(word));
+    });
+    // Output => true, true, true, true, true, true
+```
+
+## TODO
+
+List of things to add aren't in any specific order.
+
+1. Regex options to configure capturing and anchoring
+2. Cache compiled trie branches (to speed up RegExp generation)
