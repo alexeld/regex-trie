@@ -83,7 +83,6 @@ describe('#_quotemeta()', function () {
     it('should be able to cope with lots of brackets', function () {
         
         var trie     = new RegexTrie(),
-            regex    = trie.regex(),
             chars    = '[[[[[[[[[[]]]]]]]]]]((()))())(((()))))(()))',
             result   = trie._quotemeta(chars),
             expected = chars
@@ -99,4 +98,17 @@ describe('#_quotemeta()', function () {
         }
         catch (e) { }
     });
+
+    it('should escape simple regex chars', function () {
+
+        var trie     = new RegexTrie(),
+
+            regex    = trie.regex(),
+            chars    = 'foo|bar',
+            result   = trie._quotemeta(chars),
+            expected = 'foo\\|bar';
+
+        result.should.eql(expected);
+    });
+
 });

@@ -167,6 +167,15 @@ describe('#regex() matching tests', function () {
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
+
+    it('should correctly escape pipes added between phrases', function () {
+
+        var trie = new RegexTrie(),
+            phrases = ['foo', '|', 'bar'],
+            expected = new RegExp('(?:foo|\\||bar)');
+
+        trie.add(phrases).regex().should.eql(expected);
+    });
 });
 
 describe('#regex() options tests', function () {
