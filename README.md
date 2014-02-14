@@ -87,8 +87,8 @@ phrases will still match:
 
 ```javascript
     var regex = trie.add(['foo', 'bar', 'car']).regex();
-    var words_to_match = ['fool', 'afool', 'bart', 'abart', 'acar', 'acard'];
-    words_to_match.forEach( function (word) {
+
+    ['fool', 'afool', 'bart', 'abart', 'acar', 'acard'].forEach( function (word) {
         console.log(regex.test(word));
     });
     // Output => true, true, true, true, true, true
@@ -125,16 +125,7 @@ of writing, you'll need:
 ## Testing
 
 The tests within `regex-trie` use [mocha](http://visionmedia.github.io/mocha/).
-To run the tests. simply run `mocha` from your terminal. You should see output
-similar to:
-
-```
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
-
-    40 passing (30ms)
-```
-
-To
+To run the tests. simply run `mocha` from your terminal.
 
 ## TODO
 
