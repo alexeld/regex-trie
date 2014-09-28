@@ -10,7 +10,7 @@ Create a regular expression to match any of the phrases added to the trie (inspi
 ```javascript
 var RegexTrie = require('regex-trie'),
     trie      = new RegexTrie(),
-    regex     = trie.add('foo').add('bar').regex();
+    regex     = trie.add('foo').add('bar').toRegExp();
 ```
 
 ### Browser
@@ -20,12 +20,12 @@ var RegexTrie = require('regex-trie'),
 // app.js
 var RegexTrie = require('regex-trie'),
     trie      = new RegexTrie(),
-    regex     = trie.add('foo').add('bar').regex();
+    regex     = trie.add('foo').add('bar').toRegExp();
 
 console.log(regex);
 ```
 3. Use [browserfy](https://github.com/substack/node-browserify) to create the
-   the browser-safe package, e.g.: `browserfy app.js -o bundle.js`.
+   the browser-safe package, e.g.: `browserify app.js -o bundle.js`.
 
 ### Usage
 ```javascript
@@ -39,12 +39,12 @@ trie.add('foo')
     .add('bar')
     .add('baz');
 
-// You can use an array to add phrases if you'd rather (duplicate 
+// You can use an array to add phrases if you'd rather (duplicate
 // pharses are ignored.)
 trie.add(['foo', 'bar', 'baz']);
 
 // Fetch a RegExp to represent all the phrases in the trie
-var regex = trie.regex(); // regex => /(?:foo|ba[rz])/
+var regex = trie.toRegExp(); // regex => /(?:foo|ba[rz])/
 
 // What matches?
 var things_to_match = ['foo', 'bar', 'baz', 'bat', 'fun', 'food'],
@@ -85,14 +85,14 @@ phrase already exists (using `contains`).
 Will check to see if the trie contains a phrase which matches `phrase`, and
 return `true` or `false` if the phrase does or does not exist.
 
-### `.regex()`
+### `.toRegExp()`
 
 Returns a `RegExp` instance which should match each individual phrase in the
 tree. The trie will escape any character that matches: `/([^A-Za-z0-9_])/`. For
 example, if the following values are added, the pipe (OR) will be escaped:
 
 ```javascript
-    trie.add(['foo', '|', 'bar'].regex();
+    trie.add(['foo', '|', 'bar'].toRegExp();
     // => (?:foo|\||bar)
 ```
 
@@ -103,7 +103,7 @@ expression meaning it'll never capture its matches and all of the following
 phrases will still match:
 
 ```javascript
-    var regex = trie.add(['foo', 'bar', 'car']).regex();
+    var regex = trie.add(['foo', 'bar', 'car']).toRegExp();
 
     ['fool', 'afool', 'bart', 'abart', 'acar', 'acard'].forEach( function (word) {
         console.log(regex.test(word));
