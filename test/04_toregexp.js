@@ -2,12 +2,12 @@ var assert    = require('assert'),
     should    = require('should'),
     RegexTrie = require('../lib/regex-trie.js');
 
-describe('#regex()', function () {
+describe('#toRegExp()', function () {
 
     it('should return undefined if no phrases exist', function () {
 
         var trie  = new RegexTrie(),
-            regex = trie.regex();
+            regex = trie.toRegExp();
 
         should.not.exist(regex);
     });
@@ -15,7 +15,7 @@ describe('#regex()', function () {
     it('should return a RegExp object if phrases exist', function () {
 
         var trie  = new RegexTrie(),
-            regex = trie.add('foo').regex();
+            regex = trie.add('foo').toRegExp();
 
         regex.should.be.instanceof(RegExp);
     });
@@ -26,7 +26,7 @@ describe('#regex()', function () {
             expected = new RegExp('abc');
 
         trie.add('abc');
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
     });
 
     it('should return a regex for two phrases', function () {
@@ -35,7 +35,7 @@ describe('#regex()', function () {
             expected = new RegExp('(?:foo|bar)');
 
         trie.add(['foo', 'bar']);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
     });
 
     it('should return a regex for three phrases', function () {
@@ -44,11 +44,11 @@ describe('#regex()', function () {
             expected = new RegExp('(?:foo|bar|car)');
 
         trie.add(['foo', 'bar', 'car']);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
     });
 });
 
-describe('#regex() matching tests', function () {
+describe('#toRegExp() matching tests', function () {
 
     it('should do simple character classes for word stems', function () {
 
@@ -58,7 +58,7 @@ describe('#regex() matching tests', function () {
             expected = new RegExp('ba[rz]');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -71,7 +71,7 @@ describe('#regex() matching tests', function () {
             expected = new RegExp('(?:ba[rz]|fo[ox])');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -84,7 +84,7 @@ describe('#regex() matching tests', function () {
             expected = new RegExp('foo[abcd]');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -97,7 +97,7 @@ describe('#regex() matching tests', function () {
             expected = new RegExp('f(?:ox?)?');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -110,7 +110,7 @@ describe('#regex() matching tests', function () {
             expected = new RegExp('(?:foo|bar)');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -123,7 +123,7 @@ describe('#regex() matching tests', function () {
             expected = new RegExp('(?:foo|bar|car|dog|goal|hotel)');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -136,7 +136,7 @@ describe('#regex() matching tests', function () {
             expected = new RegExp('foo(?:ds?)?');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -150,7 +150,7 @@ describe('#regex() matching tests', function () {
 
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -163,7 +163,7 @@ describe('#regex() matching tests', function () {
             expected = new RegExp('(?:\\^\\(foo\\|bar\\]|car\\[a\\-z\\]zoo)');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
@@ -174,11 +174,11 @@ describe('#regex() matching tests', function () {
             phrases = ['foo', '|', 'bar'],
             expected = new RegExp('(?:foo|\\||bar)');
 
-        trie.add(phrases).regex().should.eql(expected);
+        trie.add(phrases).toRegExp().should.eql(expected);
     });
 });
 
-describe('#regex() options tests', function () {
+describe('#toRegExp() options tests', function () {
 
     it('should do simple character classes for word stems', function () {
 
@@ -188,7 +188,7 @@ describe('#regex() options tests', function () {
             expected = new RegExp('ba[rz]');
 
         trie.add(phrases);
-        trie.regex().should.eql(expected);
+        trie.toRegExp().should.eql(expected);
         phrases.should.match(expected);
         do_not_match.should.not.match(expected);
     });
