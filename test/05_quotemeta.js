@@ -5,7 +5,7 @@ var assert    = require('assert'),
 describe('#_quotemeta()', function () {
 
     it('should leave ASCII word-chars unchanged', function () {
-        
+
         var trie   = new RegexTrie(),
             result = trie._quotemeta('foo');
 
@@ -23,7 +23,7 @@ describe('#_quotemeta()', function () {
 
             result = trie._quotemeta(objects[i]);
 
-            if ( typeof result === 'undefined' || 
+            if ( typeof result === 'undefined' ||
                     ( ! result && typeof result !== 'boolean' ) ) {
 
                 should.not.exist(result);
@@ -36,7 +36,7 @@ describe('#_quotemeta()', function () {
     });
 
     it('should escape non letter, phrase, or underscore chars', function () {
-        
+
         var trie   = new RegexTrie(),
             result = trie._quotemeta('^');
 
@@ -44,14 +44,11 @@ describe('#_quotemeta()', function () {
     });
 
     it('should escape non letter, phrase, or underscore chars', function () {
-        
+
         var trie     = new RegexTrie(),
             chars    = '^%$#()[]/.,;|',
             result   = trie._quotemeta(chars),
-            expected = chars
-                .split('')
-                .map( function (chr) { return '\\' + chr; })
-                .join('');
+            expected = "\\^%\\$#\\(\\)\\[\\]/\\.,;\\|";
 
         result.should.eql(expected);
 
@@ -64,7 +61,7 @@ describe('#_quotemeta()', function () {
     });
 
     it('should escape meta chars, leaving non-meta chars alone', function () {
-        
+
         var trie     = new RegexTrie(),
             regex    = trie.regex(),
             chars    = '^foo|bar|farr$',
@@ -81,7 +78,7 @@ describe('#_quotemeta()', function () {
     });
 
     it('should be able to cope with lots of brackets', function () {
-        
+
         var trie     = new RegexTrie(),
             chars    = '[[[[[[[[[[]]]]]]]]]]((()))())(((()))))(()))',
             result   = trie._quotemeta(chars),
@@ -107,6 +104,30 @@ describe('#_quotemeta()', function () {
             chars    = 'foo|bar',
             result   = trie._quotemeta(chars),
             expected = 'foo\\|bar';
+
+        result.should.eql(expected);
+    });
+
+    it('should escape non-ASCII symbols', function () {
+
+        var trie     = new RegexTrie(),
+
+            regex    = trie.regex(),
+            chars    = 'foo\xA9bar',
+            result   = trie._quotemeta(chars),
+            expected = 'foo\\xA9bar';
+
+        result.should.eql(expected);
+    });
+
+    it('should escape astral characters', function () {
+
+        var trie     = new RegexTrie(),
+
+            regex    = trie.regex(),
+            chars    = 'foo\uD834\uDF06bar',
+            result   = trie._quotemeta(chars),
+            expected = 'foo\\uD834\\uDF06bar';
 
         result.should.eql(expected);
     });
