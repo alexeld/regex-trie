@@ -1,7 +1,7 @@
 {
   "name": "regex-trie",
   "description": "Create a regular expression to match any of the phrases added to the trie (inspired by Dan Kogai's Regexp::Trie Perl module.)",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "homepage": "https://github.com/alexeld/regex-trie",
   "keywords": [
     "regex",
