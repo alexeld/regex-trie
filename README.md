@@ -140,7 +140,7 @@ of writing, you'll need:
 
 ## Testing
 
-The tests within `regex-trie` use [mocha](http://visionmedia.github.io/mocha/)
+The tests within `regex-trie` use [mocha](http://mochajs.org/)
 with [should.js](https://github.com/visionmedia/should.js/) assertions. To test
 the module, just run `mocha` from your terminal.
 
